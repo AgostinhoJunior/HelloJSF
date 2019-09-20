@@ -6,29 +6,32 @@
 <h:head>
 	<title>Escopos</title>
 	<style>
-		.campo{
-			background-color: red;
-			color: yellow;
-		}
-
-
-
-    </style>
+.campo {
+	background-color: red;
+	color: yellow;
+}
+</style>
 </h:head>
 
 <h:body>
 
 	<h:form>
-		Nome: <h:inputText value="#{nomesController.nome}"
+		Nome: <h:inputText value="#{nomesController.pessoa.nome}"
 			style="border-color: blue;" styleClass="campo" />
+		Email: <h:inputText value="#{nomesController.pessoa.email}" />
+		DataNascimento: <h:inputText value="#{nomesController.pessoa.dataNascimento}" />
 		<h:commandButton value="Adicionar"
 			action="#{nomesController.adicionar}" />
 
-		<ol>
-			<ui:repeat var="nome" value="#{nomesController.nomes}">
-				<li>#{nome}</li>
+		<table>
+			<ui:repeat var="p" value="#{nomesController.pessoas}">
+				<tr>
+					<td>#{p.nome}</td>
+					<td>#{p.email}</td>
+					<td>#{p.dataNascimento}</td>
+				</tr>
 			</ui:repeat>
-		</ol>
+		</table>
 	</h:form>
 
 </h:body>

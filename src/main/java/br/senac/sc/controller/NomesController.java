@@ -11,28 +11,29 @@ import javax.faces.bean.ViewScoped;
 
 public class NomesController {
 
-	private String nome;
+	private Pessoa pessoa = new Pessoa();
 
-	private List<String> nomes = new ArrayList<String>();
+	private List<Pessoa> pessoas = new ArrayList<>();
 
 	public void adicionar() {
-		nomes.add(nome);
+		pessoas.add(pessoa);
+		pessoa = new Pessoa();
 	}
 
-	public String getNome() {
-		return nome;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
-	public List<String> getNomes() {
-		return nomes;
+	public List<Pessoa> getPessoas() {
+		return pessoas;
 	}
 
-	public void setNomes(List<String> nomes) {
-		this.nomes = nomes;
+	public void setPessoas(List<Pessoa> pessoas) {
+		this.pessoas = pessoas;
 	}
 
 }
