@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<title>Escopos</title>
+	<style>
+		.campo{
+			background-color: red;
+			color: yellow;
+		}
+
+
+
+    </style>
+</h:head>
+
+<h:body>
+
+	<h:form>
+		Nome: <h:inputText value="#{nomesController.nome}"
+			style="border-color: blue;" styleClass="campo" />
+		<h:commandButton value="Adicionar"
+			action="#{nomesController.adicionar}" />
+
+		<ol>
+			<ui:repeat var="nome" value="#{nomesController.nomes}">
+				<li>#{nome}</li>
+			</ui:repeat>
+		</ol>
+	</h:form>
+
+</h:body>
+</html>
