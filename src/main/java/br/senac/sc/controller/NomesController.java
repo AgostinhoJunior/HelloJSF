@@ -2,7 +2,6 @@ package br.senac.sc.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -16,7 +15,16 @@ public class NomesController {
 	private List<Pessoa> pessoas = new ArrayList<>();
 
 	public void adicionar() {
-		pessoas.add(pessoa);
+		if (pessoa.getNome().isEmpty() || pessoa.getEmail().isEmpty() || pessoa.getDataNascimento().isEmpty()) {
+			return;
+		} else {
+			pessoas.add(pessoa);
+			pessoa = new Pessoa();
+		}
+
+	}
+
+	public void limpar() {
 		pessoa = new Pessoa();
 	}
 

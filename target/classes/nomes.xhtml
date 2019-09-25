@@ -1,38 +1,128 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
 	<title>Escopos</title>
 	<style>
-.campo {
-	background-color: red;
-	color: yellow;
+* {
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+	text-align: center;
+}
+
+.container {
+	padding: 60px;
+	margin: 20px 300px;
+	background-color: #f2f2f2;
+}
+
+input {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+
+input:hover, input:focus {
+	outline: none;
+	box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+}
+
+.cadastrar, .limpar {
+	margin-right: 10px;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 15px;
+}
+
+.cadastrar {
+	background-color: #4caf50;
+}
+
+.limpar {
+	background-color: #00a6ff;
+}
+
+.cadastrar:hover {
+	background-color: #45a049;
+}
+
+.limpar:hover {
+	background-color: #0098f3;
+}
+
+
+hr {
+	margin: 30px 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+table {
+	width: 100%;
+	text-align: left;
+	background-color: #fff;
+	border-collapse: collapse;
+}
+
+table th {
+	height: 50px;
+}
+
+th, td {
+	padding: 15px;
+	border-bottom: 1px solid #ddd;
+}
 }
 </style>
 </h:head>
 
 <h:body>
 
-	<h:form>
-		Nome: <h:inputText value="#{nomesController.pessoa.nome}"
-			style="border-color: blue;" styleClass="campo" />
-		Email: <h:inputText value="#{nomesController.pessoa.email}" />
-		DataNascimento: <h:inputText value="#{nomesController.pessoa.dataNascimento}" />
-		<h:commandButton value="Adicionar"
-			action="#{nomesController.adicionar}" />
+	<div class="container">
+		<h:form>
+			<h:outputLabel for="nome">Nome: </h:outputLabel>
+			<h:inputText id="nome" value="#{nomesController.pessoa.nome}"
+				placeholder="Informe seu nome" />
 
-		<table>
-			<ui:repeat var="p" value="#{nomesController.pessoas}">
-				<tr>
-					<td>#{p.nome}</td>
-					<td>#{p.email}</td>
-					<td>#{p.dataNascimento}</td>
-				</tr>
-			</ui:repeat>
-		</table>
-	</h:form>
+			<h:outputLabel for="email">Email: </h:outputLabel>
+			<h:inputText value="#{nomesController.pessoa.email}"
+				placeholder="Informe seu email" />
 
+			<h:outputLabel for="dataNascimento">Data de nascimento: </h:outputLabel>
+			<h:inputText value="#{nomesController.pessoa.dataNascimento}"
+				placeholder="Informe sua data de nascimento" />
+
+
+			<h:commandButton value="Cadastrar"
+				action="#{nomesController.adicionar}" styleClass="cadastrar" />
+
+			<h:commandButton value="Limpar" action="#{nomesController.limpar}"
+				styleClass="limpar" />
+
+			<table>
+				<ui:repeat var="p" value="#{nomesController.pessoas}">
+
+					<tr>
+						<td>#{p.nome}</td>
+						<td>#{p.email}</td>
+						<td>#{p.dataNascimento}</td>
+
+					</tr>
+				</ui:repeat>
+			</table>
+		</h:form>
+	</div>
 </h:body>
 </html>
