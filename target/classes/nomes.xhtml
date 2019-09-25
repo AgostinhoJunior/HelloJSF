@@ -62,7 +62,6 @@ input:hover, input:focus {
 	background-color: #0098f3;
 }
 
-
 hr {
 	margin: 30px 0;
 	border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -112,6 +111,12 @@ th, td {
 				styleClass="limpar" />
 
 			<table>
+				<tr>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Data de nascimento</th>
+					
+				</tr>
 				<ui:repeat var="p" value="#{nomesController.pessoas}">
 
 					<tr>
