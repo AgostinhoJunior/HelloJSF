@@ -12,13 +12,9 @@
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-h1 {
-	text-align: center;
-}
-
 .container {
-	padding: 60px;
-	margin: 20px 300px;
+	padding: 50px;
+	margin: 20px 200px;
 	background-color: #f2f2f2;
 }
 
@@ -43,7 +39,6 @@ input:hover, input:focus {
 	border-radius: 5px;
 	color: #fff;
 	cursor: pointer;
-	font-size: 15px;
 }
 
 .cadastrar {
@@ -60,6 +55,10 @@ input:hover, input:focus {
 
 .limpar:hover {
 	background-color: #0098f3;
+}
+
+.invalido {
+	border: 1px solid red;
 }
 
 hr {
@@ -96,13 +95,13 @@ th, td {
 				placeholder="Informe seu nome" />
 
 			<h:outputLabel for="email">Email: </h:outputLabel>
-			<h:inputText value="#{nomesController.pessoa.email}"
+			<h:inputText id="email" value="#{nomesController.pessoa.email}"
 				placeholder="Informe seu email" />
 
 			<h:outputLabel for="dataNascimento">Data de nascimento: </h:outputLabel>
-			<h:inputText value="#{nomesController.pessoa.dataNascimento}"
+			<h:inputText id="dataNascimento"
+				value="#{nomesController.pessoa.dataNascimento}"
 				placeholder="Informe sua data de nascimento" />
-
 
 			<h:commandButton value="Cadastrar"
 				action="#{nomesController.adicionar}" styleClass="cadastrar" />
@@ -110,12 +109,14 @@ th, td {
 			<h:commandButton value="Limpar" action="#{nomesController.limpar}"
 				styleClass="limpar" />
 
+			<hr></hr>
+
 			<table>
 				<tr>
 					<th>Nome</th>
 					<th>Email</th>
 					<th>Data de nascimento</th>
-					
+					<th>Idade</th>
 				</tr>
 				<ui:repeat var="p" value="#{nomesController.pessoas}">
 

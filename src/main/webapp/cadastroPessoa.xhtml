@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+	<title>Escopos</title>
+	<h:outputStylesheet library="css" name="style.css" />
+
+</h:head>
+
+<h:body>
+
+	<div class="container">
+		<h:form>
+			<h:outputLabel for="nome">Nome: </h:outputLabel>
+			<h:inputText id="nome" 
+				required="true"
+				requiredMessage="Nome deve ser preenchido"
+				value="#{cadastroPessoaController.pessoa.nome}"
+				pt:placeholder="Informe seu nome" />
+
+			<h:outputLabel for="email">Email: </h:outputLabel>
+			<h:inputText value="#{cadastroPessoaController.pessoa.email}"
+				pt:placeholder="Informe seu e-mail" />
+
+			<h:outputLabel for="dataNascimento">Data de nascimento: </h:outputLabel>
+			<h:inputText
+				value="#{cadastroPessoaController.pessoa.dataNascimento}"
+				pt:placeholder="Informe sua data de nascimento" />
+
+
+
+			<h:commandButton value="Cadastrar"
+				action="#{cadastroPessoaController.adicionar}"
+				styleClass="cadastrar" />
+
+			<h:commandButton value="Limpar"
+				action="#{cadastroPessoaController.limpar}" styleClass="limpar" />
+
+			<hr></hr>
+
+			<table>
+				<tr>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Data de nascimento</th>
+					<th>Idade</th>
+
+				</tr>
+				<ui:repeat var="p" value="#{cadastroPessoaController.pessoas}">
+
+					<tr>
+						<td>#{p.nome}</td>
+						<td>#{p.email}</td>
+						<td>#{p.dataNascimento}</td>
+						<td>22</td>
+					</tr>
+				</ui:repeat>
+			</table>
+		</h:form>
+	</div>
+</h:body>
+</html>

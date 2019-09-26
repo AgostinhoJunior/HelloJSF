@@ -8,19 +8,20 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 
-public class nomesController {
+public class CadastroPessoaController {
 
-	private Pessoa pessoa = new Pessoa();
+	private Pessoa pessoa;
 
-	private List<Pessoa> pessoas = new ArrayList<>();
+	private List<Pessoa> pessoas;
+
+	public CadastroPessoaController() {
+		pessoa = new Pessoa();
+		pessoas = new ArrayList<>();
+	}
 
 	public void adicionar() {
-		if (pessoa.getNome().isEmpty() || pessoa.getEmail().isEmpty() || pessoa.getDataNascimento().isEmpty()) {
-			return;
-		} else {
-			pessoas.add(pessoa);
-			pessoa = new Pessoa();
-		}
+		pessoas.add(pessoa);
+		limpar();
 
 	}
 
